@@ -1,0 +1,47 @@
+.faixa1 {
+    background-color: #7DA074 ;
+}
+
+.faixa2 {
+    background-color: #7DA074;
+    padding: 2em;
+}
+
+.texto1 {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 1em 13em;
+}
+
+.menu {
+    font-family: Roboto-Medium;
+    font-size: 15px;
+    margin-top: -2em; 
+    margin-left: 10em;
+    height: -50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 1em 7em;
+    
+}
+
+.texto3 {
+
+color: chartreuse;
+}
+
+.opcoes {
+    direction: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    height: 7em;
+    width: 7em;
+  
+    padding: 2em 4em;
+    color: white;
+}
