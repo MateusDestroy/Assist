@@ -56,6 +56,7 @@ import _infob_hdm_esqueci_senha_adm from  "./infob_hdm_esqueci_senha_adm.js";
 import _infob_hdm_login from  "./infob_hdm_login.js";
 import _infob_hdm_login_adm from  "./infob_hdm_login_adm.js";
 import _infob_hdm_mapa from  "./infob_hdm_mapa.js";
+import _infob_hdm_sala from  "./infob_hdm_sala.js";
 import _infob_hdm_usuario from  "./infob_hdm_usuario.js";
 import _infob_mw_atores from  "./infob_mw_atores.js";
 import _infob_mw_comentarios from  "./infob_mw_comentarios.js";
@@ -124,7 +125,9 @@ import _infoc_tht_compra from  "./infoc_tht_compra.js";
 import _infoc_tht_lugar from  "./infoc_tht_lugar.js";
 import _infoc_tht_pacote from  "./infoc_tht_pacote.js";
 import _infoc_tht_usuario from  "./infoc_tht_usuario.js";
+import _infod_ecm_tb_calc from  "./infod_ecm_tb_calc.js";
 import _infod_ecm_tb_categorias from  "./infod_ecm_tb_categorias.js";
+import _infod_ecm_tb_intm from  "./infod_ecm_tb_intm.js";
 import _infod_ecm_td_roupas_femi from  "./infod_ecm_td_roupas_femi.js";
 import _infod_ecm_td_roupas_infa from  "./infod_ecm_td_roupas_infa.js";
 import _infod_ecm_td_roupas_masc from  "./infod_ecm_td_roupas_masc.js";
@@ -218,6 +221,7 @@ export default function initModels(sequelize) {
   var infob_hdm_login = _infob_hdm_login.init(sequelize, DataTypes);
   var infob_hdm_login_adm = _infob_hdm_login_adm.init(sequelize, DataTypes);
   var infob_hdm_mapa = _infob_hdm_mapa.init(sequelize, DataTypes);
+  var infob_hdm_sala = _infob_hdm_sala.init(sequelize, DataTypes);
   var infob_hdm_usuario = _infob_hdm_usuario.init(sequelize, DataTypes);
   var infob_mw_atores = _infob_mw_atores.init(sequelize, DataTypes);
   var infob_mw_comentarios = _infob_mw_comentarios.init(sequelize, DataTypes);
@@ -286,7 +290,9 @@ export default function initModels(sequelize) {
   var infoc_tht_lugar = _infoc_tht_lugar.init(sequelize, DataTypes);
   var infoc_tht_pacote = _infoc_tht_pacote.init(sequelize, DataTypes);
   var infoc_tht_usuario = _infoc_tht_usuario.init(sequelize, DataTypes);
+  var infod_ecm_tb_calc = _infod_ecm_tb_calc.init(sequelize, DataTypes);
   var infod_ecm_tb_categorias = _infod_ecm_tb_categorias.init(sequelize, DataTypes);
+  var infod_ecm_tb_intm = _infod_ecm_tb_intm.init(sequelize, DataTypes);
   var infod_ecm_td_roupas_femi = _infod_ecm_td_roupas_femi.init(sequelize, DataTypes);
   var infod_ecm_td_roupas_infa = _infod_ecm_td_roupas_infa.init(sequelize, DataTypes);
   var infod_ecm_td_roupas_masc = _infod_ecm_td_roupas_masc.init(sequelize, DataTypes);
@@ -405,6 +411,10 @@ export default function initModels(sequelize) {
   infob_amz_tbusuario.hasMany(infob_amz_tbdenuncia, { as: "infob_amz_tbdenuncia", foreignKey: "id_usuario"});
   infob_amz_tbreporte_denuncia.belongsTo(infob_amz_tbusuario, { as: "id_usuario_infob_amz_tbusuario", foreignKey: "id_usuario"});
   infob_amz_tbusuario.hasMany(infob_amz_tbreporte_denuncia, { as: "infob_amz_tbreporte_denuncia", foreignKey: "id_usuario"});
+  infob_hdm_chat.belongsTo(infob_hdm_sala, { as: "id_HDM_sala_infob_hdm_sala", foreignKey: "id_HDM_sala"});
+  infob_hdm_sala.hasMany(infob_hdm_chat, { as: "infob_hdm_chats", foreignKey: "id_HDM_sala"});
+  infob_hdm_chat.belongsTo(infob_hdm_usuario, { as: "id_HDM_usuario_infob_hdm_usuario", foreignKey: "id_HDM_usuario"});
+  infob_hdm_usuario.hasMany(infob_hdm_chat, { as: "infob_hdm_chats", foreignKey: "id_HDM_usuario"});
   infoc_jdf_cliente.belongsTo(infoc_jdf_cartao, { as: "id_cartao_infoc_jdf_cartao", foreignKey: "id_cartao"});
   infoc_jdf_cartao.hasMany(infoc_jdf_cliente, { as: "infoc_jdf_clientes", foreignKey: "id_cartao"});
   infoc_jdf_pedido.belongsTo(infoc_jdf_cliente, { as: "id_cliente_infoc_jdf_cliente", foreignKey: "id_cliente"});
@@ -573,6 +583,7 @@ export default function initModels(sequelize) {
     infob_hdm_login,
     infob_hdm_login_adm,
     infob_hdm_mapa,
+    infob_hdm_sala,
     infob_hdm_usuario,
     infob_mw_atores,
     infob_mw_comentarios,
@@ -641,7 +652,9 @@ export default function initModels(sequelize) {
     infoc_tht_lugar,
     infoc_tht_pacote,
     infoc_tht_usuario,
+    infod_ecm_tb_calc,
     infod_ecm_tb_categorias,
+    infod_ecm_tb_intm,
     infod_ecm_td_roupas_femi,
     infod_ecm_td_roupas_infa,
     infod_ecm_td_roupas_masc,

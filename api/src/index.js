@@ -5,6 +5,7 @@ import crypto from 'crypto-js'
 import enviarEmail from './enviarEmail.js'
 
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -219,6 +220,37 @@ app.post('/esqueciASenha', async (req, resp) =>{
 // app.put('/resetSenha', async (req, resp) =>{
 
 // } )
+
+
+
+app.get('/usuario', async(req, resp ) =>{
+    try {
+        let r = await db.infob_hdm_usuario.findAll()
+        resp.send(r)
+    } catch (error) {
+        resp.send(e.toString());
+    }
+})
+
+
+
+app.get('/Chat/:idSala', async(req, resp) => {
+    try {
+        let chat = await db.infob_hdm_chat.findAll({
+            where :
+            {
+                id_HDM_sala: req.params.idSala
+            }
+        });
+
+        resp.send(chat); 
+
+    } catch (e) {
+        resp.send(e.toString());
+ 
+    }
+})
+
 
 
 

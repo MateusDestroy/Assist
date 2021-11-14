@@ -2,16 +2,15 @@ import axios from 'axios'
 
 
 const api = axios.create({
-    baseURL: 'http://localhost:3030/'
+    baseURL: 'http://localhost:3030'
     
 })
 
 export default class Api {
-    async listarMensagens(idSala) {
-        let r = await api.get('/Chat');
+    async listarMensagensChat(idSala) {
+        let r = await api.get(`/Chat/${idSala}`);
         return r.data;
     }
-
 
     async listar () {
         let r = await api.get('/cadastro')
@@ -46,6 +45,9 @@ export default class Api {
         let r = await api.delete(`/chatdenu`);
         return r.data;
     }
+
+
+
 
 
 
