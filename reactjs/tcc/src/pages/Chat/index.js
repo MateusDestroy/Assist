@@ -1,17 +1,17 @@
 
 import {Link} from 'react-router-dom'
 import {Container} from './styled'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import BoxMensagem from './boxmensagem';
 
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import LoadingBar from 'react-top-loading-bar';
 
-import { useHistory } from 'react-router-dom'
+
 
 
 
@@ -45,6 +45,7 @@ export default function Chat () {
      ListaMensagem();
  
    }
+    
   
 
    ListaMensagem();
@@ -138,7 +139,7 @@ export default function Chat () {
               <input type="text" name="" placeholder="Faça um comentário" value={mensagem} onChange={e => SetMeg(e.target.value) }  />
             </div>
             <div class="publicar">
-              <button   onClick= {inserir}  className="btn-enviar"> Publicar</button>
+              <button onClick= {inserir}  className="btn-enviar"> Publicar</button>
             </div>
           </div>
         </div>
